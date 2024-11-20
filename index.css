@@ -1,0 +1,27 @@
+.post-titel-input {
+  display: block;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  width: 300px;
+}
+
+.post-text-input {
+    display: block;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    width: 300px;
+
+}
+
+.publish-button {
+  box-sizing: border-box;
+  width: 300px;
+  height: 30px;
+  
+}
+
+.row {
+  display: flex;
+  gap: 30px;
+}
+
