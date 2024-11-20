@@ -13,12 +13,15 @@ publishButton.addEventListener("click", function () {
 
 // Получение данных от пользователя
 function getPostFromUser() {
+  const date = new Date().toLocaleString(); // Получить текущую дату и время  
   const title = postTitleInput.value;
   const text = postTextInput.value;
+  
 
   return {
     title: title,
     text: text,
+    date: date,
   };
 }
 
@@ -40,8 +43,10 @@ function renderPosts() {
   posts.forEach((post) => {
     postsHtml += `
       <div class="post">
+       <p class="post__date">${post.date}</p>
         <p class="post__title">${post.title}</p>
         <p class="post__text">${post.text}</p>
+       
       </div>
     `;
   });
