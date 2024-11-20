@@ -1,63 +1,58 @@
- let post= {
-    titel: '',
-    text: ''
- };
- const postTitleInput = document.querySelector('.js-post-titel-input');
- const postTextInput = document.querySelector('.js-post-text-input');
- const publishButton = document.querySelector('.js-publish-button');
- const postsNode = document.querySelector('.js-posts');
+let posts = [];
+const postTitleInput = document.querySelector(".js-post-titel-input");
+const postTextInput = document.querySelector(".js-post-text-input");
+const publishButton = document.querySelector(".js-publish-button");
+const postsNode = document.querySelector(".js-posts");
 
- publishButton.addEventListener('click', function() {
-    const postFromUser = getPostFromUser();
+// Обработчик кнопки публикации
+publishButton.addEventListener("click", function () {
+  const postFromUser = getPostFromUser(); // Получить данные из полей ввода
+  addPost(postFromUser); // Добавить пост в массив
+  renderPosts(); // Отобразить все посты
+});
 
-    setPost(postFromUser);
+// Получение данных от пользователя
+function getPostFromUser() {
+  const title = postTitleInput.value;
+  const text = postTextInput.value;
 
-    renderPost();
- });
+  return {
+    title: title,
+    text: text,
+  };
+}
 
- function getPostFromUser() {
-     const titel = postTitleInput.value;
-     const text = postTextInput.value;
+// Добавление поста в массив
+function addPost(post) {
+  posts.push(post);
+}
 
-     return {
-         titel: titel,
-         text: text
-     };
- }
+// Получение всех постов
+function getPosts() {
+  return posts;
+}
 
- function setPost(newPost) {
-     post = newPost;
- }
+// Отображение всех постов
+function renderPosts() {
+  const posts = getPosts(); // Получить все посты
+  let postsHtml = "";
 
- function getPost() {
-     return post;
- }
- function renderPost() {
-     const post = getPost();
-    const postHtml = `
-    <div class='post'>
-    <p class='post__titel'>${post.titel}</p>
-    <p class='post__text'>${post.text}</p>
- 
-    </div>
-    `;    
-    postsNode.innerHTML = postHtml; 
+  posts.forEach((post) => {
+    postsHtml += `
+      <div class="post">
+        <p class="post__title">${post.title}</p>
+        <p class="post__text">${post.text}</p>
+      </div>
+    `;
+  });
 
- }
+  postsNode.innerHTML = postsHtml; // Добавить HTML в контейнер
+}
 // // // получить данные из поля ввода
 
 // // // сохранить пост
 
 // // // отобразить пост
-
-
-
-
-
-
-
-
-
 
 ////////////////////////////////////////////////////////////////////
 // let postTitle = '';
